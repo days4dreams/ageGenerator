@@ -8,21 +8,26 @@
 //outputs are presented to the screen
 //clear button is highlighted
 
+function calculate(){
 
+
+var indate = document.getElementById('InDate').value;
+var h2 = document.getElementsByTagName('h2')[0];
 //how to convert DOB into dateformat?
-var datetest = Date.parse("December 8, 1988");
+//var datetest = Date.parse("December 8, 1988");
+indate = Date.parse(indate);
 //date.parse is super flexible and it can read in dates in many formats
 //output of datetest will be in milliseconds: 1332288000000
 var now = new Date();
 //collects date now
 var currentdate = Date.parse(now);
 //parses it to milliseconds
-console.log(datetest);
+console.log(indate);
 console.log(currentdate);
 
-var elapsed = currentdate - datetest;
+var elapsed = currentdate - indate;
 //calculates differnce between todays date and the input (ortest) date
-console.log(elapsed);
+//console.log(elapsed);
 
 var millisPerDay = 1000*60*60*24;
 //this equation provides amount of milliseconds per day
@@ -36,5 +41,19 @@ function millisToDays(inputMillis) {
 
 var days = millisToDays(elapsed);
 //calls the function millistoDays and passes the value of elapsed into it
-console.log("You've been alive for " + days + " days");
+//console.log("You've been alive for " + days + " days");
+
+function display() {
+    h2.textContent = "You've been alive for " + days + " days";  
+}
+
+display();
+}
+
+window.onload = function(){
+    var start = document.getElementById('startbutton');
+    start.onclick = function() {
+        calculate();       
+    }
+}
 
